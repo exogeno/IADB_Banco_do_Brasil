@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1475px;
+            height: 788px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/UnidadfederativadeBrasil_2.js"></script>
+        <script src="data/Populao2020SaoPaulo_3.js"></script>
+        <script src="data/Populao2020Parana_4.js"></script>
+        <script src="data/Populao2020RioGrandedoSul_5.js"></script>
+        <script src="data/Populao2020MatoGrosodoSul_6.js"></script>
+        <script src="data/Populao2020Roraima_7.js"></script>
+        <script src="data/Populao2020Piaui_8.js"></script>
+        <script src="data/Populao2020Goias_9.js"></script>
+        <script src="data/ProjetosElegvels_10.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-36.53384999432326,-85.8993955252787],[10.324239462876704,1.9148102895502022]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatelliteHybrid_0');
+        map.getPane('pane_GoogleSatelliteHybrid_0').style.zIndex = 400;
+        var layer_GoogleSatelliteHybrid_0 = L.tileLayer('http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatelliteHybrid_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_GoogleSatelliteHybrid_0;
+        map.addLayer(layer_GoogleSatelliteHybrid_0);
+        map.createPane('pane_EsriDarkGray_1');
+        map.getPane('pane_EsriDarkGray_1').style.zIndex = 401;
+        var layer_EsriDarkGray_1 = L.tileLayer('http://server.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            pane: 'pane_EsriDarkGray_1',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 22
+        });
+        layer_EsriDarkGray_1;
+        map.addLayer(layer_EsriDarkGray_1);
+        function pop_UnidadfederativadeBrasil_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Unidad Federativa</strong><br />' + (feature.properties['Unidad Federativa'] !== null ? autolinker.link(feature.properties['Unidad Federativa'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_UnidadfederativadeBrasil_2_0() {
+            return {
+                pane: 'pane_UnidadfederativadeBrasil_2',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_UnidadfederativadeBrasil_2');
+        map.getPane('pane_UnidadfederativadeBrasil_2').style.zIndex = 402;
+        map.getPane('pane_UnidadfederativadeBrasil_2').style['mix-blend-mode'] = 'normal';
+        var layer_UnidadfederativadeBrasil_2 = new L.geoJson(json_UnidadfederativadeBrasil_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_UnidadfederativadeBrasil_2',
+            layerName: 'layer_UnidadfederativadeBrasil_2',
+            pane: 'pane_UnidadfederativadeBrasil_2',
+            onEachFeature: pop_UnidadfederativadeBrasil_2,
+            style: style_UnidadfederativadeBrasil_2_0,
+        });
+        bounds_group.addLayer(layer_UnidadfederativadeBrasil_2);
+        map.addLayer(layer_UnidadfederativadeBrasil_2);
+        function pop_Populao2020SaoPaulo_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Estimativas da população residente 2020</strong><br />' + (feature.properties['Estimativas da população residente 2020'] !== null ? autolinker.link(feature.properties['Estimativas da população residente 2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020SaoPaulo_3_0(feature) {
+            if (feature.properties['Estimativas da população residente 2020'] >= 838.000000 && feature.properties['Estimativas da população residente 2020'] <= 4543.000000 ) {
+                return {
+                pane: 'pane_Populao2020SaoPaulo_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente 2020'] >= 4543.000000 && feature.properties['Estimativas da população residente 2020'] <= 9131.400000 ) {
+                return {
+                pane: 'pane_Populao2020SaoPaulo_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente 2020'] >= 9131.400000 && feature.properties['Estimativas da população residente 2020'] <= 19364.000000 ) {
+                return {
+                pane: 'pane_Populao2020SaoPaulo_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente 2020'] >= 19364.000000 && feature.properties['Estimativas da população residente 2020'] <= 53799.200000 ) {
+                return {
+                pane: 'pane_Populao2020SaoPaulo_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente 2020'] >= 53799.200000 && feature.properties['Estimativas da população residente 2020'] <= 12325232.000000 ) {
+                return {
+                pane: 'pane_Populao2020SaoPaulo_3',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020SaoPaulo_3');
+        map.getPane('pane_Populao2020SaoPaulo_3').style.zIndex = 403;
+        map.getPane('pane_Populao2020SaoPaulo_3').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020SaoPaulo_3 = new L.geoJson(json_Populao2020SaoPaulo_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020SaoPaulo_3',
+            layerName: 'layer_Populao2020SaoPaulo_3',
+            pane: 'pane_Populao2020SaoPaulo_3',
+            onEachFeature: pop_Populao2020SaoPaulo_3,
+            style: style_Populao2020SaoPaulo_3_0,
+        });
+        bounds_group.addLayer(layer_Populao2020SaoPaulo_3);
+        map.addLayer(layer_Populao2020SaoPaulo_3);
+        function pop_Populao2020Parana_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Estimativas da população residente</strong><br />' + (feature.properties['Estimativas da população residente'] !== null ? autolinker.link(feature.properties['Estimativas da população residente'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020Parana_4_0(feature) {
+            if (feature.properties['Estimativas da população residente'] >= 1320.000000 && feature.properties['Estimativas da população residente'] <= 4187.600000 ) {
+                return {
+                pane: 'pane_Populao2020Parana_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 4187.600000 && feature.properties['Estimativas da população residente'] <= 6650.000000 ) {
+                return {
+                pane: 'pane_Populao2020Parana_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 6650.000000 && feature.properties['Estimativas da população residente'] <= 12092.800000 ) {
+                return {
+                pane: 'pane_Populao2020Parana_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 12092.800000 && feature.properties['Estimativas da população residente'] <= 21533.400000 ) {
+                return {
+                pane: 'pane_Populao2020Parana_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 21533.400000 && feature.properties['Estimativas da população residente'] <= 1948626.000000 ) {
+                return {
+                pane: 'pane_Populao2020Parana_4',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020Parana_4');
+        map.getPane('pane_Populao2020Parana_4').style.zIndex = 404;
+        map.getPane('pane_Populao2020Parana_4').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020Parana_4 = new L.geoJson(json_Populao2020Parana_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020Parana_4',
+            layerName: 'layer_Populao2020Parana_4',
+            pane: 'pane_Populao2020Parana_4',
+            onEachFeature: pop_Populao2020Parana_4,
+            style: style_Populao2020Parana_4_0,
+        });
+        bounds_group.addLayer(layer_Populao2020Parana_4);
+        map.addLayer(layer_Populao2020Parana_4);
+        function pop_Populao2020RioGrandedoSul_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Estimativas da população residente</strong><br />' + (feature.properties['Estimativas da população residente'] !== null ? autolinker.link(feature.properties['Estimativas da população residente'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Municipio</strong><br />' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020RioGrandedoSul_5_0(feature) {
+            if (feature.properties['Estimativas da população residente'] >= 982.000000 && feature.properties['Estimativas da população residente'] <= 2702.800000 ) {
+                return {
+                pane: 'pane_Populao2020RioGrandedoSul_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 2702.800000 && feature.properties['Estimativas da população residente'] <= 4356.400000 ) {
+                return {
+                pane: 'pane_Populao2020RioGrandedoSul_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 4356.400000 && feature.properties['Estimativas da população residente'] <= 7266.800000 ) {
+                return {
+                pane: 'pane_Populao2020RioGrandedoSul_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 7266.800000 && feature.properties['Estimativas da população residente'] <= 22460.600000 ) {
+                return {
+                pane: 'pane_Populao2020RioGrandedoSul_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 22460.600000 && feature.properties['Estimativas da população residente'] <= 1488252.000000 ) {
+                return {
+                pane: 'pane_Populao2020RioGrandedoSul_5',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020RioGrandedoSul_5');
+        map.getPane('pane_Populao2020RioGrandedoSul_5').style.zIndex = 405;
+        map.getPane('pane_Populao2020RioGrandedoSul_5').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020RioGrandedoSul_5 = new L.geoJson(json_Populao2020RioGrandedoSul_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020RioGrandedoSul_5',
+            layerName: 'layer_Populao2020RioGrandedoSul_5',
+            pane: 'pane_Populao2020RioGrandedoSul_5',
+            onEachFeature: pop_Populao2020RioGrandedoSul_5,
+            style: style_Populao2020RioGrandedoSul_5_0,
+        });
+        bounds_group.addLayer(layer_Populao2020RioGrandedoSul_5);
+        map.addLayer(layer_Populao2020RioGrandedoSul_5);
+        function pop_Populao2020MatoGrosodoSul_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Município</strong><br />' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Estimativas da população residente</strong><br />' + (feature.properties['Estimativas da população residente'] !== null ? autolinker.link(feature.properties['Estimativas da população residente'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020MatoGrosodoSul_6_0(feature) {
+            if (feature.properties['Estimativas da população residente'] >= 3059.000000 && feature.properties['Estimativas da população residente'] <= 7265.400000 ) {
+                return {
+                pane: 'pane_Populao2020MatoGrosodoSul_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 7265.400000 && feature.properties['Estimativas da população residente'] <= 11632.600000 ) {
+                return {
+                pane: 'pane_Populao2020MatoGrosodoSul_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 11632.600000 && feature.properties['Estimativas da população residente'] <= 21188.800000 ) {
+                return {
+                pane: 'pane_Populao2020MatoGrosodoSul_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 21188.800000 && feature.properties['Estimativas da população residente'] <= 26827.800000 ) {
+                return {
+                pane: 'pane_Populao2020MatoGrosodoSul_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população residente'] >= 26827.800000 && feature.properties['Estimativas da população residente'] <= 906092.000000 ) {
+                return {
+                pane: 'pane_Populao2020MatoGrosodoSul_6',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020MatoGrosodoSul_6');
+        map.getPane('pane_Populao2020MatoGrosodoSul_6').style.zIndex = 406;
+        map.getPane('pane_Populao2020MatoGrosodoSul_6').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020MatoGrosodoSul_6 = new L.geoJson(json_Populao2020MatoGrosodoSul_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020MatoGrosodoSul_6',
+            layerName: 'layer_Populao2020MatoGrosodoSul_6',
+            pane: 'pane_Populao2020MatoGrosodoSul_6',
+            onEachFeature: pop_Populao2020MatoGrosodoSul_6,
+            style: style_Populao2020MatoGrosodoSul_6_0,
+        });
+        bounds_group.addLayer(layer_Populao2020MatoGrosodoSul_6);
+        map.addLayer(layer_Populao2020MatoGrosodoSul_6);
+        function pop_Populao2020Roraima_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['População 2020'] !== null ? autolinker.link(feature.properties['População 2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020Roraima_7_0(feature) {
+            if (feature.properties['População 2020'] >= 1613.000000 && feature.properties['População 2020'] <= 7915.200000 ) {
+                return {
+                pane: 'pane_Populao2020Roraima_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 7915.200000 && feature.properties['População 2020'] <= 10626.600000 ) {
+                return {
+                pane: 'pane_Populao2020Roraima_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 10626.600000 && feature.properties['População 2020'] <= 13641.400000 ) {
+                return {
+                pane: 'pane_Populao2020Roraima_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 13641.400000 && feature.properties['População 2020'] <= 18821.800000 ) {
+                return {
+                pane: 'pane_Populao2020Roraima_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 18821.800000 && feature.properties['População 2020'] <= 30782.000000 ) {
+                return {
+                pane: 'pane_Populao2020Roraima_7',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020Roraima_7');
+        map.getPane('pane_Populao2020Roraima_7').style.zIndex = 407;
+        map.getPane('pane_Populao2020Roraima_7').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020Roraima_7 = new L.geoJson(json_Populao2020Roraima_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020Roraima_7',
+            layerName: 'layer_Populao2020Roraima_7',
+            pane: 'pane_Populao2020Roraima_7',
+            onEachFeature: pop_Populao2020Roraima_7,
+            style: style_Populao2020Roraima_7_0,
+        });
+        bounds_group.addLayer(layer_Populao2020Roraima_7);
+        map.addLayer(layer_Populao2020Roraima_7);
+        function pop_Populao2020Piaui_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['População 2020'] !== null ? autolinker.link(feature.properties['População 2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020Piaui_8_0(feature) {
+            if (feature.properties['População 2020'] >= 1242.000000 && feature.properties['População 2020'] <= 4317.400000 ) {
+                return {
+                pane: 'pane_Populao2020Piaui_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 4317.400000 && feature.properties['População 2020'] <= 5469.800000 ) {
+                return {
+                pane: 'pane_Populao2020Piaui_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 5469.800000 && feature.properties['População 2020'] <= 7664.200000 ) {
+                return {
+                pane: 'pane_Populao2020Piaui_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 7664.200000 && feature.properties['População 2020'] <= 14033.600000 ) {
+                return {
+                pane: 'pane_Populao2020Piaui_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['População 2020'] >= 14033.600000 && feature.properties['População 2020'] <= 868075.000000 ) {
+                return {
+                pane: 'pane_Populao2020Piaui_8',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020Piaui_8');
+        map.getPane('pane_Populao2020Piaui_8').style.zIndex = 408;
+        map.getPane('pane_Populao2020Piaui_8').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020Piaui_8 = new L.geoJson(json_Populao2020Piaui_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020Piaui_8',
+            layerName: 'layer_Populao2020Piaui_8',
+            pane: 'pane_Populao2020Piaui_8',
+            onEachFeature: pop_Populao2020Piaui_8,
+            style: style_Populao2020Piaui_8_0,
+        });
+        bounds_group.addLayer(layer_Populao2020Piaui_8);
+        map.addLayer(layer_Populao2020Piaui_8);
+        function pop_Populao2020Goias_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Estimativas da população 2020'] !== null ? autolinker.link(feature.properties['Estimativas da população 2020'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Populao2020Goias_9_0(feature) {
+            if (feature.properties['Estimativas da população 2020'] >= 1160.000000 && feature.properties['Estimativas da população 2020'] <= 3264.000000 ) {
+                return {
+                pane: 'pane_Populao2020Goias_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,253,191,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população 2020'] >= 3264.000000 && feature.properties['Estimativas da população 2020'] <= 5215.000000 ) {
+                return {
+                pane: 'pane_Populao2020Goias_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,135,97,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população 2020'] >= 5215.000000 && feature.properties['Estimativas da população 2020'] <= 9725.000000 ) {
+                return {
+                pane: 'pane_Populao2020Goias_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(182,54,121,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população 2020'] >= 9725.000000 && feature.properties['Estimativas da população 2020'] <= 22381.000000 ) {
+                return {
+                pane: 'pane_Populao2020Goias_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(80,18,123,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Estimativas da população 2020'] >= 22381.000000 && feature.properties['Estimativas da população 2020'] <= 1536097.000000 ) {
+                return {
+                pane: 'pane_Populao2020Goias_9',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,4,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Populao2020Goias_9');
+        map.getPane('pane_Populao2020Goias_9').style.zIndex = 409;
+        map.getPane('pane_Populao2020Goias_9').style['mix-blend-mode'] = 'normal';
+        var layer_Populao2020Goias_9 = new L.geoJson(json_Populao2020Goias_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Populao2020Goias_9',
+            layerName: 'layer_Populao2020Goias_9',
+            pane: 'pane_Populao2020Goias_9',
+            onEachFeature: pop_Populao2020Goias_9,
+            style: style_Populao2020Goias_9_0,
+        });
+        bounds_group.addLayer(layer_Populao2020Goias_9);
+        map.addLayer(layer_Populao2020Goias_9);
+        function pop_ProjetosElegvels_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>id</strong><br />' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ESTADO NOM</strong><br />' + (feature.properties['ESTADO NOM'] !== null ? autolinker.link(feature.properties['ESTADO NOM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ESTADO SIG</strong><br />' + (feature.properties['ESTADO SIG'] !== null ? autolinker.link(feature.properties['ESTADO SIG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>MUNICÍPIO</strong><br />' + (feature.properties['MUNICÍPIO'] !== null ? autolinker.link(feature.properties['MUNICÍPIO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ÁREA DE I</strong><br />' + (feature.properties['ÁREA DE I'] !== null ? autolinker.link(feature.properties['ÁREA DE I'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ÁREA DE_1</strong><br />' + (feature.properties['ÁREA DE_1'] !== null ? autolinker.link(feature.properties['ÁREA DE_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>VALOR TOTA</strong><br />' + (feature.properties['VALOR TOTA'] !== null ? autolinker.link(feature.properties['VALOR TOTA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Situação</strong><br />' + (feature.properties['Situação'] !== null ? autolinker.link(feature.properties['Situação'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Situaç�_1</strong><br />' + (feature.properties['Situaç�_1'] !== null ? autolinker.link(feature.properties['Situaç�_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>CAPAG</strong><br />' + (feature.properties['CAPAG'] !== null ? autolinker.link(feature.properties['CAPAG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Informaç�</strong><br />' + (feature.properties['Informaç�'] !== null ? autolinker.link(feature.properties['Informaç�'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Informa�_1</strong><br />' + (feature.properties['Informa�_1'] !== null ? autolinker.link(feature.properties['Informa�_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Parecer BI</strong><br />' + (feature.properties['Parecer BI'] !== null ? autolinker.link(feature.properties['Parecer BI'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Elegibilid</strong><br />' + (feature.properties['Elegibilid'] !== null ? autolinker.link(feature.properties['Elegibilid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>NOME PREFE</strong><br />' + (feature.properties['NOME PREFE'] !== null ? autolinker.link(feature.properties['NOME PREFE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>CARGO</strong><br />' + (feature.properties['CARGO'] !== null ? autolinker.link(feature.properties['CARGO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>TELEFONE</strong><br />' + (feature.properties['TELEFONE'] !== null ? autolinker.link(feature.properties['TELEFONE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>CELULAR</strong><br />' + (feature.properties['CELULAR'] !== null ? autolinker.link(feature.properties['CELULAR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>CPF</strong><br />' + (feature.properties['CPF'] !== null ? autolinker.link(feature.properties['CPF'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>EMAIL</strong><br />' + (feature.properties['EMAIL'] !== null ? autolinker.link(feature.properties['EMAIL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>NÚMERO AG</strong><br />' + (feature.properties['NÚMERO AG'] !== null ? autolinker.link(feature.properties['NÚMERO AG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ENDEREÇO</strong><br />' + (feature.properties['ENDEREÇO'] !== null ? autolinker.link(feature.properties['ENDEREÇO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>STATUS DO</strong><br />' + (feature.properties['STATUS DO'] !== null ? autolinker.link(feature.properties['STATUS DO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>DATA INÍC</strong><br />' + (feature.properties['DATA INÍC'] !== null ? autolinker.link(feature.properties['DATA INÍC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>DATA FIM C</strong><br />' + (feature.properties['DATA FIM C'] !== null ? autolinker.link(feature.properties['DATA FIM C'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GARANTIAS</strong><br />' + (feature.properties['GARANTIAS'] !== null ? autolinker.link(feature.properties['GARANTIAS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PRAZO AMOR</strong><br />' + (feature.properties['PRAZO AMOR'] !== null ? autolinker.link(feature.properties['PRAZO AMOR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PRAZO CAR�</strong><br />' + (feature.properties['PRAZO CAR�'] !== null ? autolinker.link(feature.properties['PRAZO CAR�'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PRAZO TOTA</strong><br />' + (feature.properties['PRAZO TOTA'] !== null ? autolinker.link(feature.properties['PRAZO TOTA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LOA</strong><br />' + (feature.properties['LOA'] !== null ? autolinker.link(feature.properties['LOA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Contrato</strong><br />' + (feature.properties['Contrato'] !== null ? autolinker.link(feature.properties['Contrato'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Parecer T�</strong><br />' + (feature.properties['Parecer T�'] !== null ? autolinker.link(feature.properties['Parecer T�'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Licença A</strong><br />' + (feature.properties['Licença A'] !== null ? autolinker.link(feature.properties['Licença A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Extratos d</strong><br />' + (feature.properties['Extratos d'] !== null ? autolinker.link(feature.properties['Extratos d'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Notas Fisc</strong><br />' + (feature.properties['Notas Fisc'] !== null ? autolinker.link(feature.properties['Notas Fisc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Declaraç�</strong><br />' + (feature.properties['Declaraç�'] !== null ? autolinker.link(feature.properties['Declaraç�'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Localizaç</strong><br />' + (feature.properties['Localizaç'] !== null ? autolinker.link(feature.properties['Localizaç'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Linha de B</strong><br />' + (feature.properties['Linha de B'] !== null ? autolinker.link(feature.properties['Linha de B'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Indicadore</strong><br />' + (feature.properties['Indicadore'] !== null ? autolinker.link(feature.properties['Indicadore'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Projeção</strong><br />' + (feature.properties['Projeção'] !== null ? autolinker.link(feature.properties['Projeção'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Acompanham</strong><br />' + (feature.properties['Acompanham'] !== null ? autolinker.link(feature.properties['Acompanham'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Lista de A</strong><br />' + (feature.properties['Lista de A'] !== null ? autolinker.link(feature.properties['Lista de A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Valor'] !== null ? autolinker.link(feature.properties['Valor'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ProjetosElegvels_10_0(feature) {
+            if (feature.properties['Valor'] >= 330000.000000 && feature.properties['Valor'] <= 666000.000000 ) {
+                return {
+                pane: 'pane_ProjetosElegvels_10',
+                radius: 2.0,
+                opacity: 1,
+                color: 'rgba(255,1,196,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,255,1,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Valor'] >= 666000.000000 && feature.properties['Valor'] <= 1120000.000000 ) {
+                return {
+                pane: 'pane_ProjetosElegvels_10',
+                radius: 6.5,
+                opacity: 1,
+                color: 'rgba(255,1,196,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,255,1,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Valor'] >= 1120000.000000 && feature.properties['Valor'] <= 2164876.000000 ) {
+                return {
+                pane: 'pane_ProjetosElegvels_10',
+                radius: 11.0,
+                opacity: 1,
+                color: 'rgba(255,1,196,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,255,1,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Valor'] >= 2164876.000000 && feature.properties['Valor'] <= 4512000.000000 ) {
+                return {
+                pane: 'pane_ProjetosElegvels_10',
+                radius: 15.5,
+                opacity: 1,
+                color: 'rgba(255,1,196,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,255,1,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Valor'] >= 4512000.000000 && feature.properties['Valor'] <= 20000000.000000 ) {
+                return {
+                pane: 'pane_ProjetosElegvels_10',
+                radius: 20.0,
+                opacity: 1,
+                color: 'rgba(255,1,196,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,255,1,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_ProjetosElegvels_10');
+        map.getPane('pane_ProjetosElegvels_10').style.zIndex = 410;
+        map.getPane('pane_ProjetosElegvels_10').style['mix-blend-mode'] = 'normal';
+        var layer_ProjetosElegvels_10 = new L.geoJson(json_ProjetosElegvels_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ProjetosElegvels_10',
+            layerName: 'layer_ProjetosElegvels_10',
+            pane: 'pane_ProjetosElegvels_10',
+            onEachFeature: pop_ProjetosElegvels_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_ProjetosElegvels_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_ProjetosElegvels_10);
+        map.addLayer(layer_ProjetosElegvels_10);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Projetos Elegívels<br /><table><tr><td style="text-align: center;"><img src="legend/ProjetosElegvels_10_3300006660000.png" /></td><td>330000 - 666000</td></tr><tr><td style="text-align: center;"><img src="legend/ProjetosElegvels_10_66600011200001.png" /></td><td>666000 - 1120000</td></tr><tr><td style="text-align: center;"><img src="legend/ProjetosElegvels_10_112000021648762.png" /></td><td>1120000 - 2164876</td></tr><tr><td style="text-align: center;"><img src="legend/ProjetosElegvels_10_216487645120003.png" /></td><td>2164876 - 4512000</td></tr><tr><td style="text-align: center;"><img src="legend/ProjetosElegvels_10_4512000200000004.png" /></td><td>4512000 - 20000000</td></tr></table>': layer_ProjetosElegvels_10,'População 2020 Goias<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020Goias_9_116032640.png" /></td><td>1160 - 3264</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Goias_9_326452151.png" /></td><td>3264 - 5215</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Goias_9_521597252.png" /></td><td>5215 - 9725</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Goias_9_9725223813.png" /></td><td>9725 - 22381</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Goias_9_2238115360974.png" /></td><td>22381 - 1536097</td></tr></table>': layer_Populao2020Goias_9,'População 2020 Piaui<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020Piaui_8_124243170.png" /></td><td>1242 - 4317</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Piaui_8_431754701.png" /></td><td>4317 - 5470</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Piaui_8_547076642.png" /></td><td>5470 - 7664</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Piaui_8_7664140343.png" /></td><td>7664 - 14034</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Piaui_8_140348680754.png" /></td><td>14034 - 868075</td></tr></table>': layer_Populao2020Piaui_8,'População 2020 Roraima<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020Roraima_7_161379150.png" /></td><td>1613 - 7915</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Roraima_7_7915106271.png" /></td><td>7915 - 10627</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Roraima_7_10627136412.png" /></td><td>10627 - 13641</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Roraima_7_13641188223.png" /></td><td>13641 - 18822</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Roraima_7_18822307824.png" /></td><td>18822 - 30782</td></tr></table>': layer_Populao2020Roraima_7,'População 2020 Mato Groso do Sul<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020MatoGrosodoSul_6_305972650.png" /></td><td>3059 - 7265</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020MatoGrosodoSul_6_7265116331.png" /></td><td>7265 - 11633</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020MatoGrosodoSul_6_11633211892.png" /></td><td>11633 - 21189</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020MatoGrosodoSul_6_21189268283.png" /></td><td>21189 - 26828</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020MatoGrosodoSul_6_268289060924.png" /></td><td>26828 - 906092</td></tr></table>': layer_Populao2020MatoGrosodoSul_6,'População 2020 Rio Grande do Sul<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020RioGrandedoSul_5_98227030.png" /></td><td>982 - 2703</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020RioGrandedoSul_5_270343561.png" /></td><td>2703 - 4356</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020RioGrandedoSul_5_435672672.png" /></td><td>4356 - 7267</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020RioGrandedoSul_5_7267224613.png" /></td><td>7267 - 22461</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020RioGrandedoSul_5_2246114882524.png" /></td><td>22461 - 1488252</td></tr></table>': layer_Populao2020RioGrandedoSul_5,'População 2020 Parana<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020Parana_4_132041880.png" /></td><td>1320 - 4188</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Parana_4_418866501.png" /></td><td>4188 - 6650</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Parana_4_6650120932.png" /></td><td>6650 - 12093</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Parana_4_12093215333.png" /></td><td>12093 - 21533</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020Parana_4_2153319486264.png" /></td><td>21533 - 1948626</td></tr></table>': layer_Populao2020Parana_4,'População 2020 Sao Paulo<br /><table><tr><td style="text-align: center;"><img src="legend/Populao2020SaoPaulo_3_83845430.png" /></td><td>838 - 4543</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020SaoPaulo_3_454391311.png" /></td><td>4543 - 9131</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020SaoPaulo_3_9131193642.png" /></td><td>9131 - 19364</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020SaoPaulo_3_19364537993.png" /></td><td>19364 - 53799</td></tr><tr><td style="text-align: center;"><img src="legend/Populao2020SaoPaulo_3_53799123252324.png" /></td><td>53799 - 12325232</td></tr></table>': layer_Populao2020SaoPaulo_3,'<img src="legend/UnidadfederativadeBrasil_2.png" /> Unidad federativa de Brasil': layer_UnidadfederativadeBrasil_2,"Esri Dark Gray": layer_EsriDarkGray_1,"Google Satellite Hybrid": layer_GoogleSatelliteHybrid_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        resetLabels([layer_UnidadfederativadeBrasil_2,layer_Populao2020SaoPaulo_3,layer_Populao2020Parana_4,layer_Populao2020RioGrandedoSul_5,layer_Populao2020MatoGrosodoSul_6,layer_Populao2020Roraima_7,layer_Populao2020Piaui_8,layer_Populao2020Goias_9]);
+        map.on("zoomend", function(){
+            resetLabels([layer_UnidadfederativadeBrasil_2,layer_Populao2020SaoPaulo_3,layer_Populao2020Parana_4,layer_Populao2020RioGrandedoSul_5,layer_Populao2020MatoGrosodoSul_6,layer_Populao2020Roraima_7,layer_Populao2020Piaui_8,layer_Populao2020Goias_9]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_UnidadfederativadeBrasil_2,layer_Populao2020SaoPaulo_3,layer_Populao2020Parana_4,layer_Populao2020RioGrandedoSul_5,layer_Populao2020MatoGrosodoSul_6,layer_Populao2020Roraima_7,layer_Populao2020Piaui_8,layer_Populao2020Goias_9]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_UnidadfederativadeBrasil_2,layer_Populao2020SaoPaulo_3,layer_Populao2020Parana_4,layer_Populao2020RioGrandedoSul_5,layer_Populao2020MatoGrosodoSul_6,layer_Populao2020Roraima_7,layer_Populao2020Piaui_8,layer_Populao2020Goias_9]);
+        });
+        </script>
+    </body>
+</html>
